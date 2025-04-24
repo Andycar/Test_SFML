@@ -1,0 +1,9 @@
+{
+    "makefile.makePath": "c:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\Hostx64\\x64\\nmake.exe",
+    "files.associations": {
+        "filesystem": "cpp",
+        "iostream": "cpp",
+        "random": "cpp",
+        "optional": "cpp"
+    }
+}
