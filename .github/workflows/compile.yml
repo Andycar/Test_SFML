@@ -43,13 +43,24 @@ jobs:
 
     - name: test env
       run: echo "${{ env.SZ_SFML_ROOT }}"
-    - name: compile
-      run: | 
-        cl src\*.cpp /O2 /GL /EHsc /std:c++17 /I ${{ env.SZ_SFML_ROOT }}/include/ /link /OUT:bin\main.exe /OPT:REF /OPT:ICF /LTCG /INCREMENTAL:NO /DYNAMICBASE /LIBPATH:${{ env.SZ_SFML_ROOT }}/lib sfml-window.lib sfml-graphics.lib sfml-system.lib
-
-
-    # - name: Download custom-built full-static SFML pack
-    #   shell: cmd
-    #   run: tooling\busybox sh tooling/sfml-setup-MSVCRT-static-addon
-
     
+    - name: compile
+      run: |
+        cl src\*.cpp /O2 /GL /EHsc /std:c++17 /I ${{ env.SZ_SFML_ROOT }}/include/ /link /OUT:bin\main.exe /OPT:REF /OPT:ICF /LTCG /INCREMENTAL:NO /DYNAMICBASE /LIBPATH:${{ env.SZ_SFML_ROOT }}/lib sfml-window.lib sfml-graphics.lib sfml-system.lib
+    
+    - name: Upload main.exe as an artifact
+      uses: actions/upload-artifact@v3
+      with:
+          name: main-exe-artifact
+          path: bin/main.exe
+  download:
+    needs: build
+    runs-on: windows-latest
+    steps:
+      - name: Download main.exe artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: main-exe-artifact
+          path: downloaded_bin
+      - name: List contents of downloaded_bin directory
+        run: dir downloaded_bin
