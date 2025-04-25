@@ -11,7 +11,6 @@ env:
   SZ_SFML_ROOT: tmp/SFML
   _SFML_PACK_NAME: windows-vc17-64.zip
   _SFML_DOWNLOAD_PACK: https://artifacts.sfml-dev.org/by-branch/master/windows-vc17-64.zip
-# _SFML_DOWNLOAD_PACK: https://artifacts.sfml-dev.org/by-branch/master/${{ _SFML_PACK_NAME }}
   # NOTE: pkg. layout: ./<commit-hash>/[lib|include|...]
   _SFML_DOWNLOAD_DIR: tmp
 
@@ -35,13 +34,6 @@ jobs:
     - name: Checkout...
       uses: actions/checkout@v3
 
-#    - name: TEST wget (Not mentioned in the Win. runner toolset!)
-#      run: wget -h
-# WELL: NOT installed! (So much about lots of download actions on the marketplace...)
-
-#    - name: Install prerequisites (wget...)
-#      run: choco install wget
-
     - name: Setup MSVC/CLI dev. env.
       uses: ilammy/msvc-dev-cmd@v1.13.0
 
@@ -49,36 +41,13 @@ jobs:
       shell: cmd
       run: tooling/sfml_dl+unzip
 
-    #  From sources (on GitHub):
-    #- uses: actions/checkout@master
-    #  with:
-    #    repository: SFML/SFML
-    #    path: tmp
-    #    ref: refs/heads/master
-    #    #??commit: a4bca20567d744c04929b1fc7135cdb845c7c4f6
-    #    # -> https://github.com/actions/checkout/issues/24
+    - name: compile
+      run: | 
+        cl main.cpp /O2 /GL /EHsc /std:c++17 /I %SFMLpath%/include/ /OUT:bin\main.exe /OPT:REF /OPT:ICF /LTCG /INCREMENTAL:NO /DYNAMICBASE /LIBPATH:%SFMLpath%/lib sfml-window.lib sfml-graphics.lib sfml-system.lib
 
-    - name: Download custom-built full-static SFML pack
-      shell: cmd
-      run: tooling\busybox sh tooling/sfml-setup-MSVCRT-static-addon
 
-    - name: Download & build zstd
-      shell: cmd
-      run: extern/zstd/build-msvc static
+    # - name: Download custom-built full-static SFML pack
+    #   shell: cmd
+    #   run: tooling\busybox sh tooling/sfml-setup-MSVCRT-static-addon
 
-    - name: Build OON with NMAKE + Jumpstart-NG
-      #working-directory: ${{env.GITHUB_WORKSPACE}}
-      shell: cmd
-      # No static-CRT version in stock SFML downloadable prebuilts, so:
-      run: nbuild
-# CRT=dll
-      #!! This would mask any make error exit codes! :-/
-      #run: tooling\diag\wtime nbuild.cmd
-
-    - name: Build OON with BusyBox-w32 + my exp. BB makefile
-      #working-directory: ${{env.GITHUB_WORKSPACE}}
-      shell: cmd
-      #!! This would mask any make error exit codes! :-/
-      #run: tooling\diag\wtime bbuild.cmd
-      run: bbuild-msvc
-# CRT=dll
+    
