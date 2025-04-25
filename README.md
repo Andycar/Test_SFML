@@ -17,9 +17,9 @@ build-release.bat
 I defined to environmental vars in both these files:
 
 ```console
-set SFML_ROOT=D:/SDK/SFML3
+set SZ_SFML_ROOT=D:/SDK/SFML3
 
-set SFML_ROOTDLL=D:\SDK\SFML3\bin
+set SZ_SFML_ROOTDLL=D:\SDK\SFML3\bin
 ```
 So, your [SFML-3.0.0-windows-vc17-64-bit.zip](https://www.sfml-dev.org/files/SFML-3.0.0-windows-vc17-64-bit.zip) should be unpacked to **D:\SDK\SFML3** dir.
 
