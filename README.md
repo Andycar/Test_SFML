@@ -17,11 +17,11 @@ set SFMLpathDLL=D:\SDK\SFML3\bin
 
 So, your SFML-3.0.0-windows-vc17-64-bit.zip should be unpacked to D:\SDK\SFML3 dir.
 
-Now, the include files from "D:/SDK/SFML3/include/**" that are defined in your Test_SFML\.vscode\c_cpp_properties.json will be used correctly, so that you can define header files in your main.cpp like.txt 
+Now, the include files from "D:/SDK/SFML3/include/**" that are defined in your Test_SFML\.vscode\c_cpp_properties.json will be used correctly.
 
+So that you can define header files in your main.cpp like below:
+```c++
 
-=========== 
 #include <SFML/Graphics.hpp>
 
-<...>
-===========
+```
