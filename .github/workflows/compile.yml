@@ -37,22 +37,27 @@ jobs:
       shell: cmd
       run: tooling/sfml_dl+unzip
 
-    - name: test env
-      run: echo "${{ env.SZ_SFML_ROOT }}"
+    # - name: test env
+    #   run: echo "${{ env.SZ_SFML_ROOT }}"
     
     - name: compile
       run: |
         cl src\*.cpp /O2 /GL /EHsc /std:c++17 /I ${{ env.SZ_SFML_ROOT }}/include/ /link /OUT:bin\main.exe /OPT:REF /OPT:ICF /LTCG /INCREMENTAL:NO /DYNAMICBASE /LIBPATH:${{ env.SZ_SFML_ROOT }}/lib sfml-window.lib sfml-graphics.lib sfml-system.lib
     
+    - name: Copy DLLs
+      shell: cmd
+      run: |
+        mkdir bin 2>NUL
+        copy "${{ env.SZ_SFML_ROOT }}\bin\sfml-graphics-3.dll" bin\
+        copy "${{ env.SZ_SFML_ROOT }}\bin\sfml-window-3.dll" bin\
+        copy "${{ env.SZ_SFML_ROOT }}\bin\sfml-system-3.dll" bin\
+
     - name: Upload main.exe as an artifact
       uses: actions/upload-artifact@v4
       with:
           name: main-exe-artifact
-          path: |
-            bin/main.exe
-            ${{ env.SZ_SFML_ROOT }}/bin/sfml-graphics-3.dll
-            ${{ env.SZ_SFML_ROOT }}/bin/sfml-window-3.dll
-            ${{ env.SZ_SFML_ROOT }}/bin/sfml-system-3.dll
+          path: bin
+          
   download:
     needs: build
     runs-on: windows-latest
