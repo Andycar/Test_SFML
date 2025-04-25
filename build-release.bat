@@ -11,3 +11,5 @@ del *.obj *.pdb
 copy %SFML_ROOTDLL%\sfml-graphics-3.dll bin\
 copy %SFML_ROOTDLL%\sfml-window-3.dll bin\
 copy %SFML_ROOTDLL%\sfml-system-3.dll bin\
+
+bin\main.exe

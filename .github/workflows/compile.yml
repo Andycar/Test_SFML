@@ -43,7 +43,7 @@ jobs:
 
     - name: compile
       run: | 
-        cl main.cpp /O2 /GL /EHsc /std:c++17 /I %SFML_ROOT%/include/ /OUT:bin\main.exe /OPT:REF /OPT:ICF /LTCG /INCREMENTAL:NO /DYNAMICBASE /LIBPATH:%SFML_ROOT%/lib sfml-window.lib sfml-graphics.lib sfml-system.lib
+        cl src\*.cpp /O2 /GL /EHsc /std:c++17 /I %SFML_ROOT%/include/ /link /OUT:bin\main.exe /OPT:REF /OPT:ICF /LTCG /INCREMENTAL:NO /DYNAMICBASE /LIBPATH:%SFML_ROOT%/lib sfml-window.lib sfml-graphics.lib sfml-system.lib
 
 
     # - name: Download custom-built full-static SFML pack
