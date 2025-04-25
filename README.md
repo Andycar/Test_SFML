@@ -33,5 +33,4 @@ So that you can define header files in your main.cpp like below:
 ```
 
 After compiling main.cpp and launching main.exe from bin\ folder, here is what you should get on your screen:
-![SFML Window test image][def]
-
+![SFML window test](SFML_window_test.png)
