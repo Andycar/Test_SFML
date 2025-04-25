@@ -49,6 +49,9 @@ jobs:
       with:
           name: main-exe-artifact
           path: bin/main.exe
+            ${{ env.SZ_SFML_ROOT }}/bin/sfml-graphics-3.dll
+            ${{ env.SZ_SFML_ROOT }}/bin/sfml-window-3.dll
+            ${{ env.SZ_SFML_ROOT }}/bin/sfml-system-3.dll
   download:
     needs: build
     runs-on: windows-latest
