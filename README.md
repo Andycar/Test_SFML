@@ -8,9 +8,9 @@ I used this archive: https://www.sfml-dev.org/files/SFML-3.0.0-windows-vc17-64-b
 
 In order for this C++ program (main.cpp) to be compiled to main.exe (Executable file), you'll have to add SMFL lib in include paths to .bat files:
 
-`build-debug.bat <br>
-build-release.bat
-`
+`build-debug.bat`
+<br>
+`build-release.bat`
 
 I defined to environmental vers in both these files:
 set SFMLpath=D:/SDK/SFML3
