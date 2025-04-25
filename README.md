@@ -31,3 +31,7 @@ So that you can define header files in your main.cpp like below:
 #include <SFML/Graphics.hpp>
 
 ```
+
+After compiling main.cpp and launching main.exe from bin\ folder, here is what you should get on your screen:
+![SFML Window test image][def]
+
