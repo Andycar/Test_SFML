@@ -48,7 +48,8 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
           name: main-exe-artifact
-          path: bin/main.exe
+          path: |
+            bin/main.exe
             ${{ env.SZ_SFML_ROOT }}/bin/sfml-graphics-3.dll
             ${{ env.SZ_SFML_ROOT }}/bin/sfml-window-3.dll
             ${{ env.SZ_SFML_ROOT }}/bin/sfml-system-3.dll
