@@ -1,32 +1,16 @@
-# name: Compile main cpp
+name: Compile main cpp
 
-# on:
-#   workflow_dispatch:
+on:
+  workflow_dispatch:
 
-# jobs:
-#   windows:
-#     name: run on windows
-#     runs-on: windows-latest
-#     steps:
-#     - uses: actions/checkout@v2
-#     - uses: ilammy/msvc-dev-cmd@v1.13.0
-#     - name: compile
-#       run: | 
-#         cl main.cpp /O2 /GL /EHsc /std:c++17 /I %SFMLpath%/include/ /OUT:bin\main.exe /OPT:REF /OPT:ICF /LTCG /INCREMENTAL:NO /DYNAMICBASE /LIBPATH:%SFMLpath%/lib sfml-window.lib sfml-graphics.lib sfml-system.lib  
-
-<<<<<<< HEAD
-=======
-
-    # - name: run
-    #   run: |
-    #     main.exe 
-    #   shell: cmd
-    # - name: upload executable
-    #   uses: actions/upload-artifact@v2
-    #   with:
-    #     name: windows
-    #     path: |
-    #       main.exe
-  
+jobs:
+  windows:
+    name: run on windows
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ilammy/msvc-dev-cmd@v1.13.0
+    - name: compile
+      run: | 
+        cl main.cpp /O2 /GL /EHsc /std:c++17 /I %SFMLpath%/include/ /OUT:bin\main.exe /OPT:REF /OPT:ICF /LTCG /INCREMENTAL:NO /DYNAMICBASE /LIBPATH:%SFMLpath%/lib sfml-window.lib sfml-graphics.lib sfml-system.lib  
           
->>>>>>> 9487c2c68d60eb63fe2ab5f26e90e838a1788ff0
