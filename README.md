@@ -35,5 +35,7 @@ So that you can define header files in your main.cpp like below:
 After compiling main.cpp and launching main.exe from bin\ folder, here is what you should get on your screen:
 ![SFML window test](SFML_window_test.png)
 
+Also you can compile and download using GiHub action (example: https://github.com/Andycar/Test_SFML/actions/runs/14667575557)
+
 For further reading, refer to excellent sources here:
 https://github.com/SFML/SFML-Game-Development-Book/tree/master
