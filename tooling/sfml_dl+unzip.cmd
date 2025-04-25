@@ -82,7 +82,7 @@ for /d %%i in (*) do (
 :break
 
 if exist "lib" if exist "include" (
-	move * ..
+	mv * ..
 ) else (
 	echo - ERROR: Unexpected package layout ^(should have "lib" and "include"^).
 	goto error_exit
