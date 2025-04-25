@@ -53,14 +53,14 @@ jobs:
       with:
           name: main-exe-artifact
           path: bin/main.exe
-  download:
-    needs: build
-    runs-on: windows-latest
-    steps:
-      - name: Download main.exe artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: main-exe-artifact
-          path: downloaded_bin
-      - name: List contents of downloaded_bin directory
-        run: dir downloaded_bin
+  # download:
+  #   needs: build
+  #   runs-on: windows-latest
+  #   steps:
+  #     - name: Download main.exe artifact
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: main-exe-artifact
+  #         path: downloaded_bin
+  #     - name: List contents of downloaded_bin directory
+  #       run: dir downloaded_bin
