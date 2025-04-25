@@ -14,7 +14,7 @@ build-debug.bat
 build-release.bat
 ```
 
-I defined to environmental vers in both these files:
+I defined to environmental vars in both these files:
 
 ```console
 set SFMLpath=D:/SDK/SFML3
