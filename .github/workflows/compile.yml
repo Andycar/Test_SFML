@@ -2,10 +2,10 @@ name: build (Windows/MSVC + SFML)
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  # push:
+  #   branches: [ main ]
+  # pull_request:
+  #   branches: [ main ]
 
 env:
   SZ_SFML_ROOT: tmp/SFML
@@ -57,7 +57,7 @@ jobs:
       with:
           name: main-exe-artifact
           path: bin
-          
+          # 
   download:
     needs: build
     runs-on: windows-latest
